@@ -21,7 +21,7 @@ Add a new key via `dynomite-1`:
 docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h dynomite-1 -p 8102 set hello world
 ```
 
-You should get an `OK` response.
+You should get response `OK`.
 
 ### Check Redis instances for the key
 
@@ -33,7 +33,7 @@ Check that key is in `redis-1`:
 docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h redis-1 get hello
 ```
 
-Should get a `"world"` response.
+Should get response `"world"`.
 
 Do the same for `redis-2`:
 
@@ -41,7 +41,7 @@ Do the same for `redis-2`:
 docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h redis-2 get hello
 ```
 
-Should also get a `"world"` response. This means that by adding the key via `dynomite-1` it was stored on both `redis-1` and `redis-2`.
+Should also get response `"world"`. This means that by adding the key via `dynomite-1` it was stored on both `redis-1` and `redis-2`.
 
 ### Delete the key
 
@@ -51,7 +51,7 @@ Delete key `hello` via `dynomite-2`:
 docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h dynomite-2 -p 8102 del hello
 ```
 
-Should get a `(integer) 1` response.
+Should get response `(integer) 1`.
 
 ### Check Redis instances for the key
 
@@ -63,10 +63,10 @@ Check `redis-1` for the key `hello`:
 docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h redis-1 get hello
 ```
 
-Should get a `(nil)` response.
+Should get response `(nil)`.
 
 ```
 docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h redis-2 get hello
 ```
 
-Should also get a `(nil)` response.
+Should also get response `(nil)`. This shows that the key has been removed from both instances.
