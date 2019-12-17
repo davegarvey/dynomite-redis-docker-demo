@@ -55,7 +55,7 @@ docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h dynomite-2 -p 8102 de
 
 Should get response `(integer) 1`.
 
-### 5. Check key has been delete from both Redis instances
+### 5. Check key has been deleted from both Redis instances
 
 Now we can check that the key has been deleted from both instances.
 
