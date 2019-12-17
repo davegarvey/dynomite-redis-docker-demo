@@ -1,0 +1,32 @@
+dyn_o_mite:
+    datacenter: dc1
+    rack: rack1
+    dyn_listen: 0.0.0.0:8101
+    dyn_seeds:
+        - dynomite-2:8101:rack1:dc2:437425602
+    data_store: 0
+    listen: 0.0.0.0:8102
+    dyn_seed_provider: simple_provider
+    servers:
+    - redis-1:6379:1
+    tokens: 437425602
+    pem_key_file: /etc/dynomitedb/dynomite.pem
+
+
+# dyn_o_mite:
+#     datacenter: dc1
+#     rack: rack1
+#     dyn_listen: 0.0.0.0:8101
+#     dyn_seeds:
+#     - dynomite-2:8101:rack2:dc2:1383429731
+#     listen: 0.0.0.0:8102
+#     servers:
+#     - redis-1:6379:1
+#     tokens: '12345678'
+#     secure_server_option: datacenter
+#     pem_key_file: dynomite.pem
+#     data_store: 0
+#     stats_listen: 0.0.0.0:22221
+#     datastore_connections: 3
+#     local_peer_connections: 3
+#     remote_peer_connections: 3

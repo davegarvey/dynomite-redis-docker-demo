@@ -1,0 +1,45 @@
+version: '3.3'
+services:
+    redis-1:
+        image: redis
+        ports: 
+            - "6381:6379"
+        networks:
+            - dynomite-redis-network
+        volumes:
+            - redis-data-1:/data
+    redis-2:
+        image: redis
+        ports: 
+            - "6382:6379"
+        networks:
+            - dynomite-redis-network
+        volumes:
+            - redis-data-2:/data
+    dynomite-1:
+        image: dynomitedb/dynomite
+        ports: 
+            - "8111:8101"
+            - "8112:8102"
+        networks:
+            - dynomite-redis-network
+        volumes:
+            - ./dyno-dc1.yml:/etc/dynomitedb/dynomite.yaml
+            - ./dynomite.pem:/etc/dynomitedb/dynomite.pem
+    dynomite-2:
+        image: dynomitedb/dynomite
+        ports: 
+            - "8121:8101"
+            - "8122:8102"
+        networks:
+            - dynomite-redis-network
+        volumes:
+            - ./dyno-dc2.yml:/etc/dynomitedb/dynomite.yaml
+            - ./dynomite.pem:/etc/dynomitedb/dynomite.pem
+        
+volumes:
+    redis-data-1:
+    redis-data-2:
+
+networks:
+    dynomite-redis-network:
