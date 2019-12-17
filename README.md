@@ -57,7 +57,7 @@ Should get response `(integer) 1`.
 
 ### 5. Check key has been delete from both Redis instances
 
-The key should be delete from both instances.
+Now we can check that the key has been deleted from both instances.
 
 Check `redis-1` for the key `hello`:
 
