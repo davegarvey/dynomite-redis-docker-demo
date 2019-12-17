@@ -5,6 +5,8 @@ Two Redis instances and two Dynomite instances. Each Dynomite instance acts as a
 
 ## Quick start
 
+Commands shown here are based on using the default container names based on the name of this repo.
+
 ### 1. Bring up the containers:
 
 ```
