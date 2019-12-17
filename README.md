@@ -23,7 +23,7 @@ docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h dynomite-1 -p 8102 se
 
 You should get response `OK`.
 
-### Check Redis instances for the key
+### 3. Check key has been inserted into both Redis instances
 
 Now we can check whether the key is available in both of the Redis instances.
 
@@ -43,7 +43,7 @@ docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h redis-2 get hello
 
 Should also get response `"world"`. This means that by adding the key via `dynomite-1` it was stored on both `redis-1` and `redis-2`.
 
-### Delete the key
+### 4. Delete the key
 
 Delete key `hello` via `dynomite-2`:
 
@@ -53,7 +53,7 @@ docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h dynomite-2 -p 8102 de
 
 Should get response `(integer) 1`.
 
-### Check Redis instances for the key
+### 5. Check key has been delete from both Redis instances
 
 The key should be delete from both instances.
 
