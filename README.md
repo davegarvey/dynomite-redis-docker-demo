@@ -26,7 +26,7 @@ You should now have four containers, a network and two volumes.
 Add a new key via `dynomite-1`:
 
 ```
-docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h dynomite-1 -p 8102 set hello world
+docker exec -it dynomite-redis-docker-demo_redis-1_1 redis-cli -h dynomite-1 -p 8102 set hello world
 ```
 
 You should get response `OK`.
@@ -38,7 +38,7 @@ Now we can check whether the key is available in both of the Redis instances.
 Check that key is in `redis-1`:
 
 ```
-docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h redis-1 get hello
+docker exec -it dynomite-redis-docker-demo_redis-1_1 redis-cli -h redis-1 get hello
 ```
 
 Should get response `"world"`.
@@ -46,7 +46,7 @@ Should get response `"world"`.
 Do the same for `redis-2`:
 
 ```
-docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h redis-2 get hello
+docker exec -it dynomite-redis-docker-demo_redis-1_1 redis-cli -h redis-2 get hello
 ```
 
 Should also get response `"world"`. This means that by adding the key via `dynomite-1` it was stored on both `redis-1` and `redis-2`.
@@ -56,7 +56,7 @@ Should also get response `"world"`. This means that by adding the key via `dynom
 Delete key `hello` via `dynomite-2`:
 
 ```
-docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h dynomite-2 -p 8102 del hello
+docker exec -it dynomite-redis-docker-demo_redis-1_1 redis-cli -h dynomite-2 -p 8102 del hello
 ```
 
 Should get response `(integer) 1`.
@@ -68,13 +68,13 @@ Now we can check that the key has been deleted from both instances.
 Check `redis-1` for the key `hello`:
 
 ```
-docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h redis-1 get hello
+docker exec -it dynomite-redis-docker-demo_redis-1_1 redis-cli -h redis-1 get hello
 ```
 
 Should get response `(nil)`.
 
 ```
-docker exec -it dynomite-redis-demo_redis-1_1 redis-cli -h redis-2 get hello
+docker exec -it dynomite-redis-docker-demo_redis-1_1 redis-cli -h redis-2 get hello
 ```
 
 Should also get response `(nil)`. This shows that the key has been removed from both instances.
