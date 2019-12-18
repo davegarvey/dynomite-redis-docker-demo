@@ -8,10 +8,14 @@ dyn_o_mite:
     listen: 0.0.0.0:8102
     dyn_seed_provider: simple_provider
     servers:
-    - redis-2:6379:1
+        - redis-2:6379:1
     tokens: 437425602
     pem_key_file: /etc/dynomitedb/dynomite.pem
-    
+    read_consistency: dc_quorum
+    write_consistency: dc_quorum
+    auto_eject_hosts: true
+    server_retry_timeout: 30000
+    server_failure_limit: 3    
       
 # dyn_o_mite:
 #     datacenter: dc2
